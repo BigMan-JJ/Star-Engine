@@ -14,6 +14,7 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.FlxSubState;
+import flixel.addons.ui.FlxUIText;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.addons.effects.FlxTrail;
 import flixel.addons.effects.FlxTrailArea;
@@ -743,6 +744,13 @@ class PlayState extends MusicBeatState
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
 		scoreTxt.scrollFactor.set();
 		add(scoreTxt);
+
+		var songDifTxt = new FlxUIText('Song: ' + SONG.song + (" | ") + 'Difficulty: ' + storyDifficultyText);
+		songDifTxt.antialiasing = true;
+		songDifTxt.offset.set(45, -730);
+		songDifTxt.setFormat(Paths.font("vcr.ttf"), 22, FlxColor.WHITE, RIGHT);
+		songDifTxt.scrollFactor.set();
+		add(songDifTxt);
 
 		iconP1 = new HealthIcon(SONG.player1, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
