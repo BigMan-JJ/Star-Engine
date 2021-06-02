@@ -2424,15 +2424,19 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('idle');
 		}
 
-		if (curBeat % 8 == 7 && curSong == 'Bopeebo')
+		switch(SONG.song) // Mid Song Events
 		{
-			boyfriend.playAnim('hey', true);
-		}
-
-		if (curBeat % 16 == 15 && SONG.song == 'Tutorial' && dad.curCharacter == 'gf' && curBeat > 16 && curBeat < 48)
-		{
-			boyfriend.playAnim('hey', true);
-			dad.playAnim('cheer', true);
+			case 'Tutorial':
+				if (curBeat % 16 == 15 && dad.curCharacter == 'gf' && curBeat > 16 && curBeat < 48)
+				{
+					boyfriend.playAnim('hey', true);
+					dad.playAnim('cheer', true);
+				}
+			case 'Bopeebo':
+				if (curBeat % 8 == 7 && curSong == 'Bopeebo')
+				{
+					boyfriend.playAnim('hey', true);
+				}
 		}
 
 		switch (curStage)
