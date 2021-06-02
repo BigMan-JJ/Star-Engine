@@ -669,6 +669,12 @@ class PlayState extends MusicBeatState
 				gf.y += 300;
 		}
 
+		switch(SONG.player1)
+		{
+			case 'bf-pico':
+				boyfriend.y -= 40;
+		}
+
 		add(gf);
 
 		// Shitty layering but whatev it works LOL
