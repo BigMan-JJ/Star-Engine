@@ -665,7 +665,17 @@ class ChartingState extends MusicBeatState
 			+ " / "
 			+ Std.string(FlxMath.roundDecimal(FlxG.sound.music.length / 1000, 2))
 			+ "\nSection: "
-			+ curSection;
+			+ curSection
+			+ "\nPlayer 1: "
+			+ _song.player1
+			+ "\nPlayer 2: "
+			+ _song.player2
+			+ "\nBPM: "
+			+ _song.bpm
+			+ "\nScroll Speed: "
+			+ _song.speed			
+			+ "\nCurrent Beat: "
+			+ curBeat;
 		super.update(elapsed);
 	}
 
