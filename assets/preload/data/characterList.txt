@@ -3,9 +3,7 @@ bf-car
 bf-christmas
 bf-pixel
 gf
-gf-car
 gf-christmas
-gf-pixel
 dad
 spooky
 monster
