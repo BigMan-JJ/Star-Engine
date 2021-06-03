@@ -23,36 +23,39 @@ class StoryMenuState extends MusicBeatState
 	var scoreText:FlxText;
 
 	var weekData:Array<Dynamic> = [
+		// Week Songs
 		['Tutorial'],
 		['Bopeebo', 'Fresh', 'Dadbattle'],
 		['Spookeez', 'South', "Monster"],
 		['Pico', 'Philly', "Blammed"],
 		['Satin-Panties', "High", "Milf"],
 		['Cocoa', 'Eggnog', 'Winter-Horrorland'],
-		['Senpai', 'Roses', 'Thorns']
+		['Senpai', 'Roses', 'Thorns'] // Put Comma here if you're adding a new week.
 	];
-	var curDifficulty:Int = 1;
+	var curDifficulty:Int = 1; // Default Difficulty when selecting a song. 0 - Easy, 1 - Normal, 2 - Hard.
 
-	public static var weekUnlocked:Array<Bool> = [true, true, true, true, true, true, true];
+	public static var weekUnlocked:Array<Bool> = [true, true, true, true, true, true, true]; // If you added the new week - type another 'true'
 
 	var weekCharacters:Array<Dynamic> = [
+		// Week Menu Characters
 		['dad', 'bf', 'gf'],
 		['dad', 'bf', 'gf'],
 		['spooky', 'bf', 'gf'],
 		['pico', 'bf', 'gf'],
 		['mom', 'bf', 'gf'],
 		['parents-christmas', 'bf', 'gf'],
-		['senpai', 'bf', 'gf']
+		['senpai', 'bf', 'gf'] // Put Comma here if you're adding the new week.
 	];
 
 	var weekNames:Array<String> = [
+		// Week Tags
 		"",
 		"Daddy Dearest",
 		"Spooky Month",
 		"PICO",
 		"MOMMY MUST MURDER",
 		"RED SNOW",
-		"hating simulator ft. moawling"
+		"hating simulator ft. moawling" // Put Comma here if you're adding the new week.
 	];
 
 	var txtWeekTitle:FlxText;
