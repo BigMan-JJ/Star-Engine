@@ -74,6 +74,9 @@ class PlayState extends MusicBeatState
 
 	private var strumLineNotes:FlxTypedGroup<FlxSprite>;
 	private var playerStrums:FlxTypedGroup<FlxSprite>;
+	private var player2Strums:FlxTypedGroup<FlxSprite>;
+
+	private var strumcum2:Array<Bool> = [false, false, false, false];
 
 	private var camZooming:Bool = false;
 	private var curSong:String = "";
@@ -134,6 +137,35 @@ class PlayState extends MusicBeatState
 	var detailsText:String = "";
 	var detailsPausedText:String = "";
 	#end
+
+	function sustain2(strum:Int, spr:FlxSprite, note:Note):Void
+		{
+			var length:Float = note.sustainLength;
+	
+			if (length > 0)
+			{
+				strumcum2[strum] = true;
+			}
+	
+			var bps:Float = Conductor.bpm / 60;
+			var spb:Float = 1 / bps;
+	
+			if (!note.isSustainNote)
+			{
+				new FlxTimer().start(length == 0 ? 0.2 : (length / Conductor.crochet * spb) + 0.1, function(tmr:FlxTimer)
+				{
+					if (!strumcum2[strum])
+					{
+						spr.animation.play("static", true);
+					}
+					else if (length > 0)
+					{
+						strumcum2[strum] = false;
+						spr.animation.play("static", true);
+					}
+				});
+			}
+		}
 
 	override public function create()
 	{
@@ -700,6 +732,7 @@ class PlayState extends MusicBeatState
 		add(strumLineNotes);
 
 		playerStrums = new FlxTypedGroup<FlxSprite>();
+		player2Strums = new FlxTypedGroup<FlxSprite>();
 
 		// startCountdown();
 
@@ -1255,6 +1288,10 @@ class PlayState extends MusicBeatState
 			{
 				playerStrums.add(babyArrow);
 			}
+			else
+			{
+				player2Strums.add(babyArrow);
+			}
 
 			babyArrow.animation.play('static');
 			babyArrow.x += 50;
@@ -1687,6 +1724,14 @@ class PlayState extends MusicBeatState
 						case 3:
 							dad.playAnim('singRIGHT' + altAnim, true);
 					}
+					player2Strums.forEach(function(spr:FlxSprite)
+					{
+						if(Math.abs(daNote.noteData) == spr.ID)
+						{
+							spr.animation.play('confirm');
+							sustain2(spr.ID, spr, daNote);
+						}
+					});
 
 					dad.holdTimer = 0;
 
@@ -1697,6 +1742,23 @@ class PlayState extends MusicBeatState
 					notes.remove(daNote, true);
 					daNote.destroy();
 				}
+
+				player2Strums.forEach(function(spr:FlxSprite)
+				{
+					if(strumcum2[spr.ID])
+					{
+						spr.animation.play("confirm");
+					}
+
+					if (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('school'))
+					{
+						spr.centerOffsets();
+						spr.offset.x -= 13;
+						spr.offset.y -= 13;
+					}
+					else
+						spr.centerOffsets();
+				});
 
 				// WIP interpolation shit? Need to fix the pause issue
 				// daNote.y = (strumLine.y - (songTime - daNote.strumTime) * (0.45 * PlayState.SONG.speed));
