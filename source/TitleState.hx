@@ -52,6 +52,8 @@ class TitleState extends MusicBeatState
 
 		PlayerSettings.init();
 
+		FlxG.mouse.visible = false;
+
 		curWacky = FlxG.random.getObject(getIntroTextShit());
 
 		// DEBUG BULLSHIT
@@ -140,12 +142,12 @@ class TitleState extends MusicBeatState
 		Conductor.changeBPM(102);
 		persistentUpdate = true;
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('titleBG'));
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('titleBackgrounds/philly'));
 		add(bg);
 
 		logoBl = new FlxSprite(-50, -50);
 		logoBl.scale.set(0.5, 0.5);
-		logoBl.frames = Paths.getSparrowAtlas('logos/logo1');
+		logoBl.frames = Paths.getSparrowAtlas('titleLogos/logo1');
 		logoBl.antialiasing = true;
 		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
 		logoBl.animation.play('bump');
@@ -156,7 +158,7 @@ class TitleState extends MusicBeatState
 		gfDance = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07);
 		gfDance.scale.set(0.9, 0.9);
 		gfDance.offset.set(240, -10);
-		gfDance.frames = Paths.getSparrowAtlas('gfDanceTitle');
+		gfDance.frames = Paths.getSparrowAtlas('titleGFs/gf');
 		gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
 		gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
 		gfDance.antialiasing = true;
@@ -172,11 +174,6 @@ class TitleState extends MusicBeatState
 		titleText.updateHitbox();
 		// titleText.screenCenter(X);
 		add(titleText);
-
-		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('logo'));
-		logo.screenCenter();
-		logo.antialiasing = true;
-		// add(logo);
 
 		// FlxTween.tween(logoBl, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG});
 		// FlxTween.tween(logo, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});
@@ -204,8 +201,6 @@ class TitleState extends MusicBeatState
 		ngSpr.antialiasing = true;
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
-
-		FlxG.mouse.visible = false;
 
 		if (initialized)
 			skipIntro();
@@ -380,23 +375,24 @@ class TitleState extends MusicBeatState
 			case 9:
 				createCoolText([curWacky[0]]);
 			// credTextShit.visible = true;
-			case 11:
+			case 10:
 				addMoreText(curWacky[1]);
 			// credTextShit.text += '\nlmao';
-			case 12:
+			case 11:
 				deleteCoolText();
 			// credTextShit.visible = false;
 			// credTextShit.text = "Friday";
 			// credTextShit.screenCenter();
-			case 13:
+			case 12:
 				addMoreText('Friday');
 			// credTextShit.visible = true;
-			case 14:
+			case 13:
 				addMoreText('Night');
 			// credTextShit.text += '\nNight';
-			case 15:
+			case 14:
 				addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
-
+			case 15:
+				addMoreText('Star Engine');
 			case 16:
 				skipIntro();
 		}
