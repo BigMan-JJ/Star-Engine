@@ -778,13 +778,6 @@ class PlayState extends MusicBeatState
 		scoreTxt.scrollFactor.set();
 		add(scoreTxt);
 
-		var songDifTxt = new FlxText('Song: ' + SONG.song + (" | ") + 'Difficulty: ' + storyDifficultyText);
-		songDifTxt.antialiasing = true;
-		songDifTxt.offset.set(-10, -695);
-		songDifTxt.setFormat(Paths.font("vcr.ttf"), 18, FlxColor.WHITE, RIGHT);
-		songDifTxt.scrollFactor.set();
-		add(songDifTxt);
-
 		iconP1 = new HealthIcon(SONG.player1, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
 		add(iconP1);
@@ -792,6 +785,13 @@ class PlayState extends MusicBeatState
 		iconP2 = new HealthIcon(SONG.player2, false);
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		add(iconP2);
+
+		var songDifTxt = new FlxText('Song: ' + SONG.song + (" | ") + 'Difficulty: ' + storyDifficultyText);
+		songDifTxt.antialiasing = true;
+		songDifTxt.offset.set(-10, -695);
+		songDifTxt.setFormat(Paths.font("vcr.ttf"), 18, FlxColor.WHITE, RIGHT);
+		songDifTxt.scrollFactor.set();
+		add(songDifTxt);
 
 		songDifTxt.cameras = [camHUD];
 		strumLineNotes.cameras = [camHUD];
