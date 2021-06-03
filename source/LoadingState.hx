@@ -37,7 +37,7 @@ class LoadingState extends MusicBeatState
 	override function create()
 	{
 		logo = new FlxSprite(-150, -100);
-		logo.frames = Paths.getSparrowAtlas('logoBumpin');
+		logo.frames = Paths.getSparrowAtlas('logos/logo1');
 		logo.antialiasing = true;
 		logo.animation.addByPrefix('bump', 'logo bumpin', 24);
 		logo.animation.play('bump');
