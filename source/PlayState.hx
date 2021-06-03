@@ -47,6 +47,27 @@ using StringTools;
 
 class PlayState extends MusicBeatState
 {
+	var characterColor:Array<String> = CoolUtil.coolTextFile(Paths.txt('characterList'));
+	var colorOk:Array<FlxColor> = [
+		0xFF31B0D1, // Boyfriend
+		0xFF31B0D1, // Boyfriend Car
+		0xFF31B0D1, // Boyfriend Christmas
+		0xFF7BD6F6, // Boyfriend Pixel
+		0xFFA5004D, // Girlfriend
+		0xFFA5004D, // Girlfriend Christmas
+		0xFFAF66CE, // Dad
+		0xFFD57E00, // Spooky Kids
+		0xFFF3FF6E, // Monster
+		0xFFF3FF6E, // Monster Christmas
+		0xFFB7D855, // Pico
+		0xFFD8558E, // Mom
+		0xFFD8558E, // Mom Car
+		0xFFD8558E, // Parents Christmas
+		0xFFFFAA6F, // Senpai
+		0xFFFFAA6F, // Senpai Angry
+		0xFFFF3C6E // Spirit
+	];
+
 	public static var curStage:String = '';
 	public static var SONG:SwagSong;
 	public static var isStoryMode:Bool = false;
@@ -769,7 +790,9 @@ class PlayState extends MusicBeatState
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
 			'health', 0, 2);
 		healthBar.scrollFactor.set();
-		healthBar.createFilledBar(0xFFFF0000, 0xFF66FF33);
+		var curColor2:FlxColor = colorOk[characterColor.indexOf(dad.curCharacter)]; // Gets Player 2 Color
+		var curColor:FlxColor = colorOk[characterColor.indexOf(boyfriend.curCharacter)]; // Gets Player 1 Color
+		healthBar.createFilledBar(curColor2, curColor);
 		// healthBar
 		add(healthBar);
 
