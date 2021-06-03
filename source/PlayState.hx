@@ -1402,12 +1402,22 @@ class PlayState extends MusicBeatState
 		perfectMode = false;
 		#end
 
+		// Changes BF icon by pressing 9
 		if (FlxG.keys.justPressed.NINE)
 		{
 			if (iconP1.animation.curAnim.name == 'bf-old')
 				iconP1.animation.play(SONG.player1);
 			else
 				iconP1.animation.play('bf-old');
+		}
+
+		// Changes BF icon by pressing 5
+		if (FlxG.keys.justPressed.FIVE)
+		{
+			if (iconP1.animation.curAnim.name == 'bf-cool')
+				iconP1.animation.play(SONG.player1);
+			else
+				iconP1.animation.play('bf-cool');
 		}
 
 		switch (curStage)
