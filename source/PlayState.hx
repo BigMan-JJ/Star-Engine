@@ -1487,19 +1487,19 @@ class PlayState extends MusicBeatState
 			health = 2;
 
 		if (healthBar.percent < 20)
-			iconP1.animation.curAnim.curFrame = 1;
+			iconP1.animation.curAnim.curFrame = 1; // Player 1 Lose Icon 
 		else
-			iconP1.animation.curAnim.curFrame = 0;
+			iconP1.animation.curAnim.curFrame = 0; // Player 1 Normal Icon
 
 		if (healthBar.percent > 80)
-			iconP2.animation.curAnim.curFrame = 1;
+			iconP2.animation.curAnim.curFrame = 1; // Player 2 Lose Icon
 		else
-			iconP2.animation.curAnim.curFrame = 0;
+			iconP2.animation.curAnim.curFrame = 0; // Player 2 Normal Icon
 
 		/* if (FlxG.keys.justPressed.NINE)
 			FlxG.switchState(new Charting()); */
 
-		#if debug
+		#if windows // Change 'windows' to 'debug' if u want to disable Animation Debug.
 		if (FlxG.keys.justPressed.EIGHT)
 			FlxG.switchState(new AnimationDebug(SONG.player2));
 		#end
