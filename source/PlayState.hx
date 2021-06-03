@@ -2436,14 +2436,10 @@ class PlayState extends MusicBeatState
 		switch(SONG.song) // Mid Song Events
 		{
 			case 'Tutorial':
-				// BF Tutorial Hey anim
-				if (curBeat % 16 == 15)
+				// BF Tutorial Hey anim and GF Tutorial cheer anim
+				if (curBeat % 16 == 15 && dad.curCharacter == 'gf' && curBeat > 16 && curBeat < 48)
 				{
 					boyfriend.playAnim('hey', true);
-				}
-				// GF Tutorial Cheer anim
-				if (dad.curCharacter == 'gf' && curBeat > 16 && curBeat < 48)
-				{
 					dad.playAnim('cheer', true);
 				}
 			case 'Bopeebo':
